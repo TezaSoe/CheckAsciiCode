@@ -29,17 +29,20 @@ namespace CheckAsciiCode
             Console.OutputEncoding = Encoding.Unicode;
 
             string line;
-            Console.Write("Enter your Unicode Character : ");
-            while (!string.IsNullOrEmpty(line = Console.ReadLine()))
+            
+            while (!string.IsNullOrEmpty(line = GetStdin()))
             {
                 var asciiCodeByte = Encoding.GetEncoding("Windows-1252").GetBytes(line);
                 int asciiCode = asciiCodeByte[0];
                 Console.WriteLine("Your Input is : " + line + " Ascii is : " + asciiCode + " Byte Length is : " + asciiCodeByte.Length);
-
                 Console.WriteLine();
-                Console.Write("Enter your Unicode Character : ");
             }
+        }
 
+        static string GetStdin()
+        {
+            Console.Write("Enter your Unicode Character : ");
+            return Console.ReadLine();
         }
     }
 }
